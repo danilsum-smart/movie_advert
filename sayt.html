@@ -220,8 +220,8 @@
         const card = document.getElementById('card');
         const overlay = document.querySelector('.overlay');
 
-        // Удаляем класс выходной анимации
-card.classList.remove('animate__flipOutX');
+        // Сначала удаляем предыдущие анимационные классы, если они были
+        card.classList.remove('animate__flipOutX', 'animate__flipInX');
 
         // Устанавливаем содержимое карточки
         document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
@@ -241,7 +241,7 @@ card.classList.remove('animate__flipOutX');
         const card = document.getElementById('card');
         const overlay = document.querySelector('.overlay');
 
-        // Удаляем входную анимацию и скрываем карточку
+        // Удаляем класс входной анимации и скрываем карточку
         card.classList.remove('animate__flipInX');
         card.style.opacity = '0';
         card.style.zIndex = '-1';
