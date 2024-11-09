@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christmas Advent Calendar</title>
+    <!-- Подключаем Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
+        /* Основные стили для календаря */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -39,14 +41,14 @@
             overflow: hidden;
             transition: transform 0.3s;
             position: relative;
-            padding-top: 100%; /* Квадратные ячейки */
+            padding-top: 100%;
         }
 
         .day:hover {
             transform: scale(1.05);
         }
 
-        /* Карточка */
+        /* Стили карточки */
         .card {
             position: fixed;
             top: 50%;
@@ -62,21 +64,14 @@
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             opacity: 0;
-            transform: translate(-50%, -50%) scale(0.5);
-            transition: opacity 0.5s ease, transform 0.5s ease; /* Плавный переход для карточки */
+            transform: translate(-50%, -50%);
             z-index: -1;
             padding: 20px;
             text-align: center;
         }
 
-        .show-card .card {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1); /* Плавное увеличение */
-            z-index: 100;
-        }
-
         .card img {
-            width: 100%; /* Изображение подстраивается под ширину карточки */
+            width: 100%;
             height: auto;
             border-radius: 8px;
             margin-bottom: 10px;
@@ -120,13 +115,14 @@
             background-color: rgba(0, 0, 0, 0);
             opacity: 0;
             z-index: -1;
-            transition: background-color 0.5s ease, opacity 0.5s ease; /* Плавный переход для затемнения */
+            transition: background-color 0.5s ease, opacity 0.5s ease;
         }
 
-        .show-card .card {
-    animation: animate__animated animate__zoomIn 0.5s ease forwards;
-    z-index: 100;
-}
+        .show-card .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 1;
+            z-index: 99;
+        }
 
         .social-icons {
             position: fixed;
@@ -163,35 +159,13 @@
 
 <div class="calendar">
     <div class="day" onclick="openCard(1)" style="background-image: url('image1.jpg');"></div>
-    <div class="day" onclick="openCard(2)" style="background-image: url('image2.jpg');"></div>
-    <div class="day" onclick="openCard(3)" style="background-image: url('image3.jpg');"></div>
-    <div class="day" onclick="openCard(4)" style="background-image: url('image4.jpg');"></div>
-    <div class="day" onclick="openCard(5)" style="background-image: url('image5.jpg');"></div>
-    <div class="day" onclick="openCard(6)" style="background-image: url('image6.jpg');"></div>
-    <div class="day" onclick="openCard(7)" style="background-image: url('image7.jpg');"></div>
-    <div class="day" onclick="openCard(8)" style="background-image: url('image8.jpg');"></div>
-    <div class="day" onclick="openCard(9)" style="background-image: url('image9.jpg');"></div>
-    <div class="day" onclick="openCard(10)" style="background-image: url('image10.jpg');"></div>
-    <div class="day" onclick="openCard(11)" style="background-image: url('image11.jpg');"></div>
-    <div class="day" onclick="openCard(12)" style="background-image: url('image12.jpg');"></div>
-    <div class="day" onclick="openCard(13)" style="background-image: url('image13.jpg');"></div>
-    <div class="day" onclick="openCard(14)" style="background-image: url('image14.jpg');"></div>
-    <div class="day" onclick="openCard(15)" style="background-image: url('image15.jpg');"></div>
-    <div class="day" onclick="openCard(16)" style="background-image: url('image16.jpg');"></div>
-    <div class="day" onclick="openCard(17)" style="background-image: url('image17.jpg');"></div>
-    <div class="day" onclick="openCard(18)" style="background-image: url('image18.jpg');"></div>
-    <div class="day" onclick="openCard(19)" style="background-image: url('image19.jpg');"></div>
-    <div class="day" onclick="openCard(20)" style="background-image: url('image20.jpg');"></div>
-    <div class="day" onclick="openCard(21)" style="background-image: url('image21.jpg');"></div>
-    <div class="day" onclick="openCard(22)" style="background-image: url('image22.jpg');"></div>
-    <div class="day" onclick="openCard(23)" style="background-image: url('image23.jpg');"></div>
-    <div class="day" onclick="openCard(24)" style="background-image: url('image24.jpg');"></div>
-    <div class="day" onclick="openCard(25)" style="background-image: url('image25.jpg');"></div>
+    <!-- Добавьте остальные ячейки календаря здесь -->
 </div>
 
 <div class="overlay" onclick="closeCard()"></div>
-<div class="card">
-div class="card animate__animated" id="card">.
+
+<!-- Карточка с классами Animate.css для анимации -->
+<div class="card animate__animated" id="card">
     <button class="close-btn" onclick="closeCard()">×</button>
     <img id="cardImage" src="" alt="Movie Poster">
     <p id="cardText"></p>
@@ -213,80 +187,49 @@ div class="card animate__animated" id="card">.
 </div>
 
 <script>
-    function closeCard() {
-    const card = document.getElementById('card');
-    const overlay = document.querySelector('.overlay');
-
-    // Удаляем класс входной анимации
-    card.classList.remove('animate__flipInX');
-
-    // Добавляем класс выходной анимации
-    card.classList.add('animate__flipOutX');
-
-    // Скрываем затемнение фона после завершения анимации
-    overlay.style.opacity = '0';
-    overlay.style.zIndex = '-1';
-
-    // Ждем окончания анимации перед скрытием карточки
-    card.addEventListener('animationend', () => {
-        if (card.classList.contains('animate__flipOutX')) {
-            card.style.opacity = '0';
-            card.style.zIndex = '-1';
-            card.classList.remove('animate__flipOutX'); // Убираем класс выходной анимации
-        }
-    }, { once: true });
-}
-
     function openCard(dayNumber) {
-    const card = document.getElementById('card');
-    const overlay = document.querySelector('.overlay');
+        const card = document.getElementById('card');
+        const overlay = document.querySelector('.overlay');
 
-    // Удаляем класс выходной анимации, если он был добавлен
-    card.classList.remove('animate__flipOutX');
+        // Удаляем класс выходной анимации, если он был добавлен
+        card.classList.remove('animate__flipOutX');
 
-    // Добавляем класс входной анимации
-    card.classList.add('animate__flipInX');
-    card.style.opacity = '1';
-    card.style.zIndex = '100';
+        // Добавляем класс входной анимации
+        card.classList.add('animate__flipInX');
+        card.style.opacity = '1';
+        card.style.zIndex = '100';
 
-    // Добавляем затемнение фона
-    overlay.style.opacity = '1';
-    overlay.style.zIndex = '99';
+        // Добавляем затемнение фона
+        overlay.style.opacity = '1';
+        overlay.style.zIndex = '99';
 
-    // Устанавливаем содержимое карточки
-    document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
-    document.getElementById('cardText').innerText = `Description for day ${dayNumber}`;
-}
-        const descriptions = {
-            1: "Это первый день нашего рождественского календаря! Каждый день мы будем открывать новую картинку, рассказывая вам об удивительных вещах, которые делают Рождество особенным.",
-            2: "Сегодня мы дарим вам теплую картинку, напоминающую о волшебстве Рождества. Этот сезон объединяет семьи, освещая мир праздничными огнями и улыбками.",
-            3: "Рождественская елка, украшенная блестящими шарами и гирляндами, — это символ праздника, несущий в дом радость. Пусть этот день принесет вам немного рождественского чуда!",
-            4: "Сегодня мы наслаждаемся чашкой горячего шоколада, окруженные теплом и уютом. Пусть ваш день будет таким же теплым и радостным, как этот напиток!",
-            5: "Рождество — это время делиться с близкими и друзьями. Сегодня мы ценим подарки, которые получаем и отдаем, будь то материальные вещи или простая доброта.",
-            6: "Сегодняшний день напоминает нам о важности семьи. Пусть этот день принесет вам радость и ощущение принадлежности к чему-то большому и теплому.",
-            7: "Снегопады создают зимнюю сказку. Пусть сегодняшний день принесет вам столько же радости, как первый снегопад в декабре!",
-            8: "Сегодняшняя картинка посвящена рождественским украшениям, которые делают каждый дом уютным и волшебным. Пусть ваш день будет наполнен красотой и праздничным духом!",
-            9: "Рождественские традиции напоминают нам о прошлом и объединяют семьи. Пусть сегодняшний день станет частью вашей семейной истории.",
-            10: "Сегодня мы отмечаем важность благодарности. Пусть этот день принесет вам возможность поблагодарить тех, кто делает вашу жизнь лучше.",
-            11: "Сегодняшний день напоминает нам о том, как важно делиться теплом с окружающими. Пусть ваш день будет наполнен дружелюбием и заботой!",
-            12: "Сладкие угощения всегда делают праздники лучше! Пусть сегодняшний день будет сладким и запоминающимся.",
-            13: "Сегодняшняя картинка посвящена рождественским свечам, которые освещают наши дома и создают уютную атмосферу. Пусть ваш день будет ярким и теплым.",
-            14: "Сегодняшний день напоминает нам о радости ожидания. Пусть он принесет вам немного волшебного предвкушения!",
-            15: "Сегодня мы наслаждаемся звуками рождественских песен, которые поднимают настроение и наполняют душу праздничным духом.",
-            16: "Снежинки, падающие с неба, уникальны и прекрасны. Пусть сегодняшний день принесет вам чувство легкости и красоты.",
-            17: "Сегодняшний день посвящен доброте и щедрости. Пусть он станет для вас возможностью сделать что-то хорошее для других.",
-            18: "Рождественские истории напоминают нам о важности веры и надежды. Пусть ваш день будет наполнен вдохновением и светом.",
-            19: "Сегодняшний день посвящен теплу домашнего очага и уюту. Пусть он принесет вам покой и умиротворение.",
-            20: "Рождество — это время чудес и радости. Пусть сегодняшний день подарит вам немного волшебства!",
-            21: "Сегодня мы ценим моменты, проведенные с семьей и друзьями. Пусть этот день принесет вам много тепла и радости.",
-            22: "Сегодняшний день напоминает нам о важности улыбок и смеха. Пусть он будет наполнен радостью!",
-            23: "Рождественские вечеринки и встречи с друзьями делают этот сезон особенным. Пусть ваш день будет наполнен весельем и приятными встречами.",
-            24: "Сегодня — канун Рождества! Пусть этот день принесет вам радость и ожидание завтрашнего праздника.",
-            25: "С Рождеством! Сегодня день волшебства, когда сбываются мечты. Пусть ваш день будет наполнен любовью, счастьем и светом!"
-        };
+        // Устанавливаем содержимое карточки
+        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
+        document.getElementById('cardText').innerText = `Description for day ${dayNumber}`;
+    }
 
-        // Устанавливаем текст для выбранного дня
-        document.getElementById('cardText').innerText = descriptions[dayNumber] || "Пусть этот день принесет вам радость и праздничное настроение!";
+    function closeCard() {
+        const card = document.getElementById('card');
+        const overlay = document.querySelector('.overlay');
+
+        // Удаляем класс входной анимации
+        card.classList.remove('animate__flipInX');
+
+        // Добавляем класс выходной анимации
+        card.classList.add('animate__flipOutX');
+
+        // Скрываем затемнение фона после завершения анимации
+        overlay.style.opacity = '0';
+        overlay.style.zIndex = '-1';
+
+        // Ждем окончания анимации перед скрытием карточки
+        card.addEventListener('animationend', () => {
+            if (card.classList.contains('animate__flipOutX')) {
+                card.style.opacity = '0';
+                card.style.zIndex = '-1';
+                card.classList.remove('animate__flipOutX'); // Убираем класс выходной анимации
+            }
+        }, { once: true });
     }
 </script>
 
