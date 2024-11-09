@@ -14,7 +14,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh; /* Центрирование по вертикали */
-    margin: 1px;
+    margin: 0;
+    padding: 0;
     background-image: url('background.jpg');
     background-size: cover;
     background-position: center;
@@ -25,9 +26,12 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            margin: 1px;
-            padding: 20px;
-            background: transparent; /* Опционально, можно добавить цвет фона для области заголовка */
+            margin: 0;
+            padding: 0;
+            background: transparent; /* Прозрачный фон */
+            position: relative;
+            top: 0;
+            left: 0;
         }
 
         /* Стили для изображения заголовка */
