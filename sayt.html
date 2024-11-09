@@ -65,6 +65,13 @@
             z-index: -1;
             padding: 20px;
             text-align: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .card.animate__animated {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card img {
@@ -193,7 +200,7 @@
 
 <div class="social-icons">
     <a href="https://facebook.com" target="_blank">
-        <img src="instagram-icon.png" alt="Facebook">
+        <img src="facebook-icon.png" alt="Facebook">
     </a>
     <a href="https://twitter.com" target="_blank">
         <img src="twitter-icon.png" alt="Twitter">
@@ -204,7 +211,7 @@
     <a href="https://linkedin.com" target="_blank">
         <img src="linkedin-icon.png" alt="LinkedIn">
     </a>
-</div>
+</div</div>
 
 <script>
     function openCard(dayNumber) {
@@ -212,9 +219,10 @@
         const overlay = document.querySelector('.overlay');
 
         // Устанавливаем содержимое карточки
-        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
+        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
+        document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
 
-        // Удаляем класс анимации, чтобы сбросить его и обеспечить перезапуск анимации
+        // Удаляем класс анимации, чтобы сбросить его и перезапустить анимацию
         card.classList.remove('animate__flipInX');
 
         // Принудительно запускаем перерасчет стилей (reflow), чтобы сбросить анимацию
