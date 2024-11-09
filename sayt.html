@@ -191,6 +191,7 @@
 
 <div class="overlay" onclick="closeCard()"></div>
 <div class="card">
+div class="card animate__animated" id="card">.
     <button class="close-btn" onclick="closeCard()">×</button>
     <img id="cardImage" src="" alt="Movie Poster">
     <p id="cardText"></p>
@@ -213,13 +214,49 @@
 
 <script>
     function closeCard() {
-        document.body.classList.remove('show-card');
+    const card = document.getElementById('card');
+    const overlay = document.querySelector('.overlay');
+
+    // Удаляем класс входной анимации
+    card.classList.remove('animate__flipInX');
+
+    // Добавляем класс выходной анимации
+    card.classList.add('animate__flipOutX');
+
+    // Скрываем затемнение фона после завершения анимации
+    overlay.style.opacity = '0';
+    overlay.style.zIndex = '-1';
+
+    // Ждем окончания анимации перед скрытием карточки
+    card.addEventListener('animationend', () => {
+        if (card.classList.contains('animate__flipOutX')) {
+            card.style.opacity = '0';
+            card.style.zIndex = '-1';
+            card.classList.remove('animate__flipOutX'); // Убираем класс выходной анимации
+        }
+    }, { once: true });
 }
 
     function openCard(dayNumber) {
-        document.body.classList.add('show-card');
-        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
+    const card = document.getElementById('card');
+    const overlay = document.querySelector('.overlay');
 
+    // Удаляем класс выходной анимации, если он был добавлен
+    card.classList.remove('animate__flipOutX');
+
+    // Добавляем класс входной анимации
+    card.classList.add('animate__flipInX');
+    card.style.opacity = '1';
+    card.style.zIndex = '100';
+
+    // Добавляем затемнение фона
+    overlay.style.opacity = '1';
+    overlay.style.zIndex = '99';
+
+    // Устанавливаем содержимое карточки
+    document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
+    document.getElementById('cardText').innerText = `Description for day ${dayNumber}`;
+}
         const descriptions = {
             1: "Это первый день нашего рождественского календаря! Каждый день мы будем открывать новую картинку, рассказывая вам об удивительных вещах, которые делают Рождество особенным.",
             2: "Сегодня мы дарим вам теплую картинку, напоминающую о волшебстве Рождества. Этот сезон объединяет семьи, освещая мир праздничными огнями и улыбками.",
