@@ -150,6 +150,36 @@
         .close-btn:hover {
             background-color: #ff0000;
         }
+
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons img {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
@@ -209,6 +239,22 @@
         </div>
     </div>
 
+    <!-- Иконки социальных сетей -->
+    <div class="social-icons">
+        <a href="https://facebook.com" target="_blank">
+            <img src="facebook-icon.png" alt="Facebook">
+        </a>
+        <a href="https://twitter.com" target="_blank">
+            <img src="twitter-icon.png" alt="Twitter">
+        </a>
+        <a href="https://instagram.com" target="_blank">
+            <img src="instagram-icon.png" alt="Instagram">
+        </a>
+        <a href="https://linkedin.com" target="_blank">
+            <img src="linkedin-icon.png" alt="LinkedIn">
+        </a>
+    </div>
+
     <script>
         function openCard(dayNumber) {
             const card = document.getElementById('card');
@@ -260,7 +306,7 @@
         const movies = {
             1: {
                 title: "Рождественская история",
-                poster: "movies/poster1.jpg",
+                                poster: "movies/poster1.jpg",
                 year: "2022",
                 rating: "8.5",
                 description: "Это фильм рассказывает удивительную историю Рождества...",
@@ -274,7 +320,7 @@
                 poster: "movies/poster2.jpg",
                 year: "2021",
                 rating: "7.9",
-                description: "Наполненный чудесами и радостью...",
+                description: "Праздничное волшебство, наполненное чудесами и радостью...",
                 streaming: [
                     { name: "Hulu", url: "https://hulu.com", icon: "hulu-icon.png" },
                     { name: "Disney+", url: "https://disneyplus.com", icon: "disneyplus-icon.png" }
@@ -291,8 +337,9 @@
                     { name: "HBO Max", url: "https://hbomax.com", icon: "hbomax-icon.png" }
                 ]
             },
-            // Добавьте остальные фильмы...
+            // Добавьте оставшиеся фильмы по аналогии с указанными
         };
     </script>
 </body>
 </html>
+
