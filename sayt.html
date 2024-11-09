@@ -217,25 +217,28 @@
 
 <script>
     function openCard(dayNumber) {
-        const card = document.getElementById('card');
-        const overlay = document.querySelector('.overlay');
+    const card = document.getElementById('card');
+    const overlay = document.querySelector('.overlay');
 
-        // Сначала удаляем предыдущие анимационные классы, если они были
-        card.classList.remove('animate__flipOutX', 'animate__flipInX');
+    // Устанавливаем содержимое карточки
+    document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
+    document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
 
-        // Устанавливаем содержимое карточки
-        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
-        document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
+    // Удаляем класс анимации, чтобы сбросить анимацию, если она была ранее
+    card.classList.remove('animate__flipInX');
 
-        // Добавляем класс входной анимации и показываем карточку
-        card.classList.add('animate__flipInX');
-        card.style.opacity = '1';
-        card.style.zIndex = '100';
+    // Принудительное перерасчет стилей для повторной активации анимации
+    void card.offsetWidth;
 
-        // Добавляем затемнение фона
-        overlay.style.opacity = '1';
-        overlay.style.zIndex = '99';
-    }
+    // Добавляем класс анимации и отображаем карточку
+    card.classList.add('animate__flipInX');
+    card.style.opacity = '1';
+    card.style.zIndex = '100';
+
+    // Добавляем затемнение фона
+    overlay.style.opacity = '1';
+    overlay.style.zIndex = '99';
+}
 
     function closeCard() {
         const card = document.getElementById('card');
@@ -277,7 +280,7 @@
         22: "Сегодняшний день напоминает о важности улыбок и смеха. Пусть он будет радостным и светлым.",
         23: "Рождественские вечеринки делают сезон особенным. Пусть ваш день будет наполнен весельем и друзьями.",
         24: "Сегодня — канун Рождества! Пусть этот день принесет радость и ожидание завтрашнего праздника.",
-        25: "С Рождеством Данил! Пусть сегодняшний день будет наполнен любовью, счастьем и чудесами. Поздравляем!"
+        25: "1С Рождеством Данил! Пусть сегодняшний день будет наполнен любовью, счастьем и чудесами. Поздравляем!"
     };
 </script>
 
