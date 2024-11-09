@@ -46,10 +46,12 @@
             transform: scale(1.05);
         }
 
+        /* Центрируем нижнюю часть карточки по центру экрана */
         .card {
             position: fixed;
-            top: 50%;
             left: 50%;
+            bottom: 50%; /* нижняя часть по середине экрана */
+            transform: translateX(-50%); /* центрируем по горизонтали */
             width: 80%;
             max-width: 400px;
             background-color: white;
@@ -61,7 +63,6 @@
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             opacity: 0;
-            transform: translate(-50%, -50%);
             z-index: -1;
             padding: 20px;
             text-align: center;
@@ -200,7 +201,7 @@
 
 <div class="social-icons">
     <a href="https://facebook.com" target="_blank">
-        <img src="facebook-icon.png" alt="Facebook">
+        <img src="twitter-icon.png" alt="Facebook">
     </a>
     <a href="https://twitter.com" target="_blank">
         <img src="twitter-icon.png" alt="Twitter">
@@ -211,10 +212,10 @@
     <a href="https://linkedin.com" target="_blank">
         <img src="linkedin-icon.png" alt="LinkedIn">
     </a>
-</div</div>
+</div>
 
 <script>
-    function openCard(dayNumber) {
+    function openCard(dayNumber)function openCard(dayNumber) {
         const card = document.getElementById('card');
         const overlay = document.querySelector('.overlay');
 
