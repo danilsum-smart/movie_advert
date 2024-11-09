@@ -46,12 +46,12 @@
             transform: scale(1.05);
         }
 
-        /* Центрируем нижнюю часть карточки по центру экрана */
+        /* Центрируем карточку по экрану */
         .card {
             position: fixed;
+            top: 50%;
             left: 50%;
-            bottom: 50%; /* нижняя часть по середине экрана */
-            transform: translateX(-50%); /* центрируем по горизонтали */
+            transform: translate(-50%, -50%);
             width: 80%;
             max-width: 400px;
             background-color: white;
@@ -67,12 +67,6 @@
             padding: 20px;
             text-align: center;
             transition: opacity 0.3s ease;
-        }
-
-        .card.animate__animated {
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .card img {
@@ -201,7 +195,7 @@
 
 <div class="social-icons">
     <a href="https://facebook.com" target="_blank">
-        <img src="twitter-icon.png" alt="Facebook">
+        <img src="facebook-icon.png" alt="Facebook">
     </a>
     <a href="https://twitter.com" target="_blank">
         <img src="twitter-icon.png" alt="Twitter">
@@ -211,11 +205,10 @@
     </a>
     <a href="https://linkedin.com" target="_blank">
         <img src="linkedin-icon.png" alt="LinkedIn">
-    </a>
-</div>
+    </a</div>
 
 <script>
-    function openCard(dayNumber)function openCard(dayNumber) {
+    function openCard(dayNumber) {
         const card = document.getElementById('card');
         const overlay = document.querySelector('.overlay');
 
@@ -223,7 +216,7 @@
         document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
         document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
 
-        // Удаляем класс анимации, чтобы сбросить его и перезапустить анимацию
+        // Удаляем класс анимации, чтобы сбросить его и обеспечить повторное воспроизведение
         card.classList.remove('animate__flipInX');
 
         // Принудительно запускаем перерасчет стилей (reflow), чтобы сбросить анимацию
@@ -232,7 +225,7 @@
         // Добавляем класс анимации снова, чтобы анимация воспроизвелась
         card.classList.add('animate__flipInX');
 
-        // Показываем карточку и делаем ее видимой
+        // Показываем карточку и делаем её видимой
         card.style.opacity = '1';
         card.style.zIndex = '100';
 
