@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Advent Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #f2f2f2;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            max-width: 90vw;
+            width: 90vw;
+            max-width: 500px;
+            padding: 10px;
+            margin-top: -40px;
+        }
+
+        .day {
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            position: relative;
+            padding-top: 100%; /* Квадратные ячейки */
+        }
+
+        .day:hover {
+            transform: scale(1.05);
+        }
+
+        /* Карточка */
+        .card {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            max-width: 400px;
+            background-color: white;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            z-index: -1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .show-card .card {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            z-index: 100;
+        }
+
+        .card img {
+            width: 100%; /* Изображение подстраивается под ширину карточки */
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            text-align: justify;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .close-btn:hover {
+            background-color: #ff0000;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+
+        .show-card .overlay {
+            opacity: 1;
+            z-index: 99;
+        }
+
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calendar">
+    <div class="day" onclick="openCard(1)" style="background-image: url('image1.jpg');"></div>
+    <div class="day" onclick="openCard(2)" style="background-image: url('image2.jpg');"></div>
+    <div class="day" onclick="openCard(3)" style="background-image: url('image3.jpg');"></div>
+    <div class="day" onclick="openCard(4)" style="background-image: url('image4.jpg');"></div>
+    <div class="day" onclick="openCard(5)" style="background-image: url('image5.jpg');"></div>
+    <div class="day" onclick="openCard(6)" style="background-image: url('image6.jpg');"></div>
+    <div class="day" onclick="openCard(7)" style="background-image: url('image7.jpg');"></div>
+    <div class="day" onclick="openCard(8)" style="background-image: url('image8.jpg');"></div>
+    <div class="day" onclick="openCard(9)" style="background-image: url('image9.jpg');"></div>
+    <div class="day" onclick="openCard(10)" style="background-image: url('image10.jpg');"></div>
+    <div class="day" onclick="openCard(11)" style="background-image: url('image11.jpg');"></div>
+    <div class="day" onclick="openCard(12)" style="background-image: url('image12.jpg');"></div>
+    <div class="day" onclick="openCard(13)" style="background-image: url('image13.jpg');"></div>
+    <div class="day" onclick="openCard(14)" style="background-image: url('image14.jpg');"></div>
+    <div class="day" onclick="openCard(15)" style="background-image: url('image15.jpg');"></div>
+    <div class="day" onclick="openCard(16)" style="background-image: url('image16.jpg');"></div>
+    <div class="day" onclick="openCard(17)" style="background-image: url('image17.jpg');"></div>
+    <div class="day" onclick="openCard(18)" style="background-image: url('image18.jpg');"></div>
+    <div class="day" onclick="openCard(19)" style="background-image: url('image19.jpg');"></div>
+    <div class="day" onclick="openCard(20)" style="background-image: url('image20.jpg');"></div>
+    <div class="day" onclick="openCard(21)" style="background-image: url('image21.jpg');"></div>
+    <div class="day" onclick="openCard(22)" style="background-image: url('image22.jpg');"></div>
+    <div class="day" onclick="openCard(23)" style="background-image: url('image23.jpg');"></div>
+    <div class="day" onclick="openCard(24)" style="background-image: url('image24.jpg');"></div>
+    <div class="day" onclick="openCard(25)" style="background-image: url('image25.jpg');"></div>
+</div>
+
+<div class="overlay" onclick="closeCard()"></div>
+<div class="card">
+    <button class="close-btn" onclick="closeCard()">×</button>
+    <img id="cardImage" src="" alt="Movie Poster">
+    <p id="cardText"></p>
+</div>
+
+<div class="social-icons">
+    <a href="https://facebook.com" target="_blank">
+        <img src="facebook-icon.png" alt="Facebook">
+    </a>
+    <a href="https://twitter.com" target="_blank">
+        <img src="twitter-icon.png" alt="Twitter">
+    </a>
+    <a href="https://instagram.com" target="_blank">
+        <img src="instagram-icon.png" alt="Instagram">
+    </a>
+    <a href="https://linkedin.com" target="_blank">
+        <img src="linkedin-icon.png" alt="LinkedIn">
+    </a>
+</div>
+
+<script>
+    function closeCard() {
+        document.body.classList.remove('show-card');
+    }
+
+    function openCard(dayNumber) {
+        document.body.classList.add('show-card');
+        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
+
+        const descriptions = {
+            1: "Это первый день нашего рождественского календаря! ...",
+            // добавьте остальные описания по аналогии...
+            25: "С Рождеством! Сегодня день волшебства, когда сбываются мечты. Пусть ваш день будет наполнен любовью, счастьем и светом!"
+        };
+
+        // Устанавливаем текст для выбранного дня
+        document.getElementById('cardText').innerText = descriptions[dayNumber] || "Пусть этот день принесет вам радость и праздничное настроение!";
+    }
+</script>
+
+</body>
+</html>
