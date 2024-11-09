@@ -219,9 +219,8 @@
         card.classList.remove('animate__flipOutX');
         
         // Устанавливаем содержимое карточки
-        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg
-
-document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
+        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
+        document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
 
         // Добавляем класс входной анимации и показываем карточку
         card.classList.add('animate__flipInX');
@@ -237,22 +236,14 @@ document.getElementById('cardText').innerText = descriptions[dayNumber] || `Desc
         const card = document.getElementById('card');
         const overlay = document.querySelector('.overlay');
 
-        // Удаляем класс входной анимации и добавляем класс выходной анимации
+        // Удаляем входную анимацию и скрываем карточку
         card.classList.remove('animate__flipInX');
-        card.classList.add('animate__flipOutX');
+        card.style.opacity = '0';
+        card.style.zIndex = '-1';
 
         // Скрываем затемнение фона
         overlay.style.opacity = '0';
         overlay.style.zIndex = '-1';
-
-        // Ждем окончания анимации перед скрытием карточки
-        card.addEventListener('animationend', () => {
-            if (card.classList.contains('animate__flipOutX')) {
-                card.style.opacity = '0';
-                card.style.zIndex = '-1';
-                card.classList.remove('animate__flipOutX'); // Убираем класс выходной анимации
-            }
-        }, { once: true });
     }
 
     // Описания для карточек
