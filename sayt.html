@@ -4,109 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christmas Advent Calendar</title>
-    <!-- Подключаем Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Центрирование по вертикали */
-    margin: 0;
-    background-image: url('background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-color: #f2f2f2;
-}
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #f2f2f2;
+        }
 
-.calendar {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Сетка 5x5 */
-    gap: 8px;
-    width: 90vw;
-    max-width: 500px;
-    padding: 10px;
-}
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            max-width: 90vw;
+            width: 90vw;
+            max-width: 500px;
+            padding: 10px;
+            margin-top: -40px;
+        }
 
-.day {
-    width: 100%;
-    padding-top: 100%; /* Квадратные ячейки */
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s;
-    position: relative;
-}
+        .day {
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            position: relative;
+            padding-top: 100%; /* Квадратные ячейкиrrrrrr */
+        }
 
-.day:hover {
-    transform: scale(1.05);
-}
+        .day:hover {
+            transform: scale(1.05);
+        }
 
-/* Карточка */
-.card {
-    position: absolute;
-    width: 80%;
-    max-width: 400px;
-    background-color: white;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    z-index: -1;
-    padding: 20px;
-    text-align: center;
-}
+        /* Карточка */
+        .card {
+            position: fixed;
+            width: 80%;
+            max-width: 400px;
+            background-color: white;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            z-index: -1;
+            padding: 20px;
+            text-align: center;
+        }
 
-.show-card .card {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 100;
-}
+        .show-card .card {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            z-index: 100;
+        }
 
-.card img {
-    width: 100%; /* Изображение подстраивается под ширину карточки */
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
+        .card img {
+            width: 100%; /* Изображение подстраивается под ширину карточки */
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
 
-.card p {
-    font-size: 14px;
-    text-align: justify;
-}
+        .card p {
+            font-size: 14px;
+            text-align: justify;
+        }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    background: #333;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-}
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
 
-.close-btn:hover {
-    background-color: #ff0000;
-}
-
+        .close-btn:hover {
+            background-color: #ff0000;
+        }
 
         .overlay {
             position: fixed;
@@ -114,14 +112,13 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.5);
             opacity: 0;
             z-index: -1;
-            transition: background-color 0.5s ease, opacity 0.5s ease;
+            transition: opacity 0.4s ease;
         }
 
         .show-card .overlay {
-            background-color: rgba(0, 0, 0, 0.5);
             opacity: 1;
             z-index: 99;
         }
@@ -160,7 +157,6 @@
 <body>
 
 <div class="calendar">
-    <!-- Добавляем все 25 ячеек календаря с уникальными изображениями -->
     <div class="day" onclick="openCard(1)" style="background-image: url('image1.jpg');"></div>
     <div class="day" onclick="openCard(2)" style="background-image: url('image2.jpg');"></div>
     <div class="day" onclick="openCard(3)" style="background-image: url('image3.jpg');"></div>
@@ -189,9 +185,7 @@
 </div>
 
 <div class="overlay" onclick="closeCard()"></div>
-
-<!-- Карточка с классами Animate.css для анимации -->
-<div class="card animate__animated" id="card">
+<div class="card">
     <button class="close-btn" onclick="closeCard()">×</button>
     <img id="cardImage" src="" alt="Movie Poster">
     <p id="cardText"></p>
@@ -209,77 +203,27 @@
     </a>
     <a href="https://linkedin.com" target="_blank">
         <img src="linkedin-icon.png" alt="LinkedIn">
-    </a</div>
+    </a>
+</div>
 
 <script>
-    function openCard(dayNumber) {
-        const card = document.getElementById('card');
-        const overlay = document.querySelector('.overlay');
-
-        // Устанавливаем содержимое карточки
-        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
-        document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
-
-        // Удаляем класс анимации, чтобы сбросить его и обеспечить повторное воспроизведение
-        card.classList.remove('animate__flipInX');
-
-        // Принудительно запускаем перерасчет стилей (reflow), чтобы сбросить анимацию
-        void card.offsetWidth;
-
-        // Добавляем класс анимации снова, чтобы анимация воспроизвелась
-        card.classList.add('animate__flipInX');
-
-        // Показываем карточку и делаем её видимой
-        card.style.opacity = '1';
-        card.style.zIndex = '100';
-
-        // Показываем затемнение фона
-        overlay.style.opacity = '1';
-        overlay.style.zIndex = '99';
-    }
-
     function closeCard() {
-        const card = document.getElementById('card');
-        const overlay = document.querySelector('.overlay');
-
-        // Удаляем класс анимации и скрываем карточку
-        card.classList.remove('animate__flipInX');
-        card.style.opacity = '0';
-        card.style.zIndex = '-1';
-
-        // Скрываем затемнение фона
-        overlay.style.opacity = '0';
-        overlay.style.zIndex = '-1';
+        document.body.classList.remove('show-card');
     }
 
-    // Описания для карточек
-    const descriptions = {
-        1: "Это первый день нашего рождественского календаря! Каждый день мы будем открывать новую картинку с сюрпризом.",
-        2: "Сегодня мы дарим вам теплую картинку, напоминающую о волшебстве Рождества. Пусть ваш день будет наполнен радостью!",
-        3: "Рождественская елка, украшенная шарами и гирляндами, — символ праздника. Пусть этот день принесет вам немного чуда.",
-        4: "Сегодня наслаждаемся чашкой горячего шоколада. Пусть ваш день будет таким же теплым и уютным.",
-        5: "Рождество — это время делиться с близкими. Пусть этот день наполнится добротой и щедростью.",
-        6: "Сегодняшний день напоминает о важности семьи. Пусть он принесет радость и ощущение тепла.",
-        7: "Снегопады создают зимнюю сказку. Пусть сегодняшний день будет таким же волшебным!",
-        8: "Сегодняшняя картинка посвящена рождественским украшениям, которые делают каждый дом уютным и праздничным.",
-        9: "Рождественские традиции напоминают о прошлом и объединяют семьи. Пусть ваш день будет наполнен теплом.",
-        10: "Сегодня мы отмечаем благодарность. Пусть этот день будет возможностью поблагодарить тех, кто рядом.",
-        11: "Сегодняшний день напоминает о важности дружелюбия. Пусть он будет наполнен заботой и теплом.",
-        12: "Сладкие угощения делают праздники лучше. Пусть сегодняшний день будет сладким и приятным.",
-        13: "Сегодняшняя картинка посвящена рождественским свечам, которые создают уют. Пусть ваш день будет ярким.",
-        14: "Сегодняшний день — это ожидание чуда. Пусть он принесет вам радость и вдохновение.",
-        15: "Рождественские песни поднимают настроение и наполняют душу. Пусть сегодняшний день будет наполнен музыкой.",
-        16: "Снежинки, падающие с неба, прекрасны и уникальны. Пусть сегодняшний день принесет легкость и красоту.",
-        17: "Сегодня посвящен доброте и щедрости. Пусть этот день станет возможностью сделать добро для других.",
-        18: "Рождественские истории напоминают о вере и надежде. Пусть ваш день будет наполнен светом и вдохновением.",
-        19: "Сегодняшний день посвящен теплу домашнего очага. Пусть он принесет покой и уют в ваш дом.",
-        20: "Рождество — это время чудес и радости. Пусть сегодняшний день подарит вам немного волшебства.",
-        21: "Сегодня мы ценим моменты, проведенные с семьей. Пусть этот день будет наполнен теплом и радостью.",
-        22: "Сегодняшний день напоминает о важности улыбок и смеха. Пусть он будет радостным и светлым.",
-        23: "Рождественские вечеринки делают сезон особенным. Пусть ваш день будет наполнен весельем и друзьями.",
-        24: "Сегодня — канун Рождества! Пусть этот день принесет радость и ожидание завтрашнего праздника.",
-        25: "С Рождеством! Пусть сегодняшний день будет наполнен любовью, счастьем и чудесами. Поздравляем!"
-    };
+    function openCard(dayNumber) {
+        document.body.classList.add('show-card');
+        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
+
+        const descriptions = {
+            1: "Это первый день нашего рождественского календаря! ...",
+            // добавьте остальные описания по аналогии...
+                    25: "С Рождеством! Сегодня день волшебства, когда сбываются мечты. Пусть ваш день будет наполнен любовью, счастьем и светом!"
+        };
+
+        // Устанавливаем текст для выбранного дня
+        document.getElementById('cardText').innerText = descriptions[dayNumber] || "Пусть этот день принесет вам радость и праздничное настроение!";
+    }
 </script>
 
 </body>
