@@ -7,7 +7,6 @@
     <!-- Подключаем Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        /* Основные стили для календаря */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -47,7 +46,6 @@
             transform: scale(1.05);
         }
 
-        /* Стили карточки */
         .card {
             position: fixed;
             top: 50%;
@@ -67,7 +65,6 @@
             z-index: -1;
             padding: 20px;
             text-align: center;
-            transition: opacity 0.3s ease;
         }
 
         .card img {
@@ -105,7 +102,6 @@
             background-color: #ff0000;
         }
 
-        /* Overlay для затемнения фона */
         .overlay {
             position: fixed;
             top: 0;
@@ -197,7 +193,7 @@
 
 <div class="social-icons">
     <a href="https://facebook.com" target="_blank">
-        <img src="twitter-icon.png" alt="Facebook">
+        <img src="instagram-icon.png" alt="Facebook">
     </a>
     <a href="https://twitter.com" target="_blank">
         <img src="twitter-icon.png" alt="Twitter">
@@ -213,19 +209,19 @@
 <script>
     function openCard(dayNumber) {
         const card = document.getElementById('card');
-        const overlay = document.queryconst overlay = document.querySelector('.overlay');
+        const overlay = document.querySelector('.overlay');
 
         // Устанавливаем содержимое карточки
-        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
-        document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
+        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
 
-        // Удаляем класс анимации, чтобы сбросить его и перезапустить анимацию
+        // Удаляем класс анимации, чтобы сбросить его и обеспечить перезапуск анимации
         card.classList.remove('animate__flipInX');
 
-        // Используем setTimeout, чтобы принудительно перезапустить анимацию
-        setTimeout(() => {
-            card.classList.add('animate__flipInX');
-        }, 10);
+        // Принудительно запускаем перерасчет стилей (reflow), чтобы сбросить анимацию
+        void card.offsetWidth;
+
+        // Добавляем класс анимации снова, чтобы анимация воспроизвелась
+        card.classList.add('animate__flipInX');
 
         // Показываем карточку и делаем ее видимой
         card.style.opacity = '1';
