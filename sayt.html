@@ -180,6 +180,18 @@
             width: 20px;
             height: 20px;
         }
+		
+		 .card .streaming-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .card .streaming-icons a img {
+            width: 30px;
+            height: 30px;
+        }
+		
     </style>
 </head>
 <body>
@@ -278,8 +290,6 @@
                 link.target = '_blank';
                 const img = document.createElement('img');
                 img.src = service.icon;
-                img.alt = service.name;
-                img.title = `Смотреть на ${service.name}`;
                 link.appendChild(img);
                 streamingLinks.appendChild(link);
             });
@@ -306,13 +316,13 @@
         const movies = {
             1: {
                 title: "Рождественская история",
-                                poster: "movies/poster1.jpg",
+                poster: "movies/poster1.jpg",
                 year: "2022",
                 rating: "8.5",
                 description: "Это фильм рассказывает удивительную историю Рождества...",
                 streaming: [
-                    { name: "Netflix", url: "https://netflix.com", icon: "root/netflix-icon.png" },
-                    { name: "Amazon Prime", url: "https://primevideo.com", icon: "amazon-icon.png" }
+                    { url: "https://netflix.com", icon: "netflix-icon.png" },
+                    { url: "https://primevideo.com", icon: "amazon-icon.png" }
                 ]
             },
             2: {
@@ -322,8 +332,8 @@
                 rating: "7.9",
                 description: "Праздничное волшебство, наполненное чудесами и радостью...",
                 streaming: [
-                    { name: "Hulu", url: "https://hulu.com", icon: "hulu-icon.png" },
-                    { name: "Disney+", url: "https://disneyplus.com", icon: "disneyplus-icon.png" }
+                    { url: "https://hulu.com", icon: "hulu-icon.png" },
+                    { url: "https://disneyplus.com", icon: "disneyplus-icon.png" }
                 ]
             },
             3: {
@@ -333,22 +343,11 @@
                 rating: "8.0",
                 description: "История, полная тепла и семейных традиций...",
                 streaming: [
-                    { name: "Netflix", url: "https://netflix.com", icon: "netflix-icon.png" },
-                    { name: "HBO Max", url: "https://hbomax.com", icon: "hbomax-icon.png" }
+                    { url: "https://netflix.com", icon: "netflix-icon.png" },
+                    { url: "https://hbomax.com", icon: "hbomax-icon.png" }
                 ]
             },
-			4: {
-                title: "Семейные традиции",
-                poster: "movies/poster4.jpg",
-                year: "2020",
-                rating: "8.0",
-                description: "История, полная тепла и семейных традиций...",
-                streaming: [
-                    { name: "Netflix", url: "https://netflix.com", icon: "netflix-icon.png" },
-                    { name: "HBO Max", url: "https://hbomax.com", icon: "hbomax-icon.png" }
-                ]
-            },
-            // Добавьте оставшиеся фильмы по аналогии с указанными
+            // Добавьте оставшиеся фильмы по аналогии
         };
     </script>
 </body>
