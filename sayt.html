@@ -158,8 +158,32 @@
 <body>
 
 <div class="calendar">
+    <!-- Добавляем все 25 ячеек календаря с уникальными изображениями -->
     <div class="day" onclick="openCard(1)" style="background-image: url('image1.jpg');"></div>
-    <!-- Добавьте остальные ячейки календаря здесь -->
+    <div class="day" onclick="openCard(2)" style="background-image: url('image2.jpg');"></div>
+    <div class="day" onclick="openCard(3)" style="background-image: url('image3.jpg');"></div>
+    <div class="day" onclick="openCard(4)" style="background-image: url('image4.jpg');"></div>
+    <div class="day" onclick="openCard(5)" style="background-image: url('image5.jpg');"></div>
+    <div class="day" onclick="openCard(6)" style="background-image: url('image6.jpg');"></div>
+    <div class="day" onclick="openCard(7)" style="background-image: url('image7.jpg');"></div>
+    <div class="day" onclick="openCard(8)" style="background-image: url('image8.jpg');"></div>
+    <div class="day" onclick="openCard(9)" style="background-image: url('image9.jpg');"></div>
+    <div class="day" onclick="openCard(10)" style="background-image: url('image10.jpg');"></div>
+    <div class="day" onclick="openCard(11)" style="background-image: url('image11.jpg');"></div>
+    <div class="day" onclick="openCard(12)" style="background-image: url('image12.jpg');"></div>
+    <div class="day" onclick="openCard(13)" style="background-image: url('image13.jpg');"></div>
+    <div class="day" onclick="openCard(14)" style="background-image: url('image14.jpg');"></div>
+    <div class="day" onclick="openCard(15)" style="background-image: url('image15.jpg');"></div>
+    <div class="day" onclick="openCard(16)" style="background-image: url('image16.jpg');"></div>
+    <div class="day" onclick="openCard(17)" style="background-image: url('image17.jpg');"></div>
+    <div class="day" onclick="openCard(18)" style="background-image: url('image18.jpg');"></div>
+    <div class="day" onclick="openCard(19)" style="background-image: url('image19.jpg');"></div>
+    <div class="day" onclick="openCard(20)" style="background-image: url('image20.jpg');"></div>
+    <div class="day" onclick="openCard(21)" style="background-image: url('image21.jpg');"></div>
+    <div class="day" onclick="openCard(22)" style="background-image: url('image22.jpg');"></div>
+    <div class="day" onclick="openCard(23)" style="background-image: url('image23.jpg');"></div>
+    <div class="day" onclick="openCard(24)" style="background-image: url('image24.jpg');"></div>
+    <div class="day" onclick="openCard(25)" style="background-image: url('image25.jpg');"></div>
 </div>
 
 <div class="overlay" onclick="closeCard()"></div>
@@ -193,8 +217,13 @@
 
         // Удаляем класс выходной анимации, если он был добавлен
         card.classList.remove('animate__flipOutX');
+        
+        // Устанавливаем содержимое карточки
+        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg
 
-        // Добавляем класс входной анимации
+document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
+
+        // Добавляем класс входной анимации и показываем карточку
         card.classList.add('animate__flipInX');
         card.style.opacity = '1';
         card.style.zIndex = '100';
@@ -202,23 +231,17 @@
         // Добавляем затемнение фона
         overlay.style.opacity = '1';
         overlay.style.zIndex = '99';
-
-        // Устанавливаем содержимое карточки
-        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
-        document.getElementById('cardText').innerText = `Description for day ${dayNumber}`;
     }
 
     function closeCard() {
         const card = document.getElementById('card');
         const overlay = document.querySelector('.overlay');
 
-        // Удаляем класс входной анимации
+        // Удаляем класс входной анимации и добавляем класс выходной анимации
         card.classList.remove('animate__flipInX');
-
-        // Добавляем класс выходной анимации
         card.classList.add('animate__flipOutX');
 
-        // Скрываем затемнение фона после завершения анимации
+        // Скрываем затемнение фона
         overlay.style.opacity = '0';
         overlay.style.zIndex = '-1';
 
@@ -231,6 +254,35 @@
             }
         }, { once: true });
     }
+
+    // Описания для карточек
+    const descriptions = {
+        1: "Это первый день нашего рождественского календаря! Каждый день мы будем открывать новую картинку...",
+        2: "Сегодня мы дарим вам теплую картинку, напоминающую о волшебстве Рождества...",
+        3: "Рождественская елка, украшенная блестящими шарами и гирляндами, — это символ праздника...",
+        4: "Сегодня мы наслаждаемся чашкой горячего шоколада, окруженные теплом и уютом...",
+        5: "Рождество — это время делиться с близкими и друзьями...",
+        6: "Сегодняшний день напоминает нам о важности семьи...",
+        7: "Снегопады создают зимнюю сказку...",
+        8: "Сегодняшняя картинка посвящена рождественским украшениям...",
+        9: "Рождественские традиции напоминают нам о прошлом...",
+        10: "Сегодня мы отмечаем важность благодарности...",
+        11: "Сегодняшний день напоминает нам о том, как важно делиться теплом...",
+        12: "Сладкие угощения всегда делают праздники лучше...",
+        13: "Сегодняшняя картинка посвящена рождественским свечам...",
+        14: "Сегодняшний день напоминает нам о радости ожидания...",
+        15: "Сегодня мы наслаждаемся звуками рождественских песен...",
+        16: "Снежинки, падающие с неба, уникальны и прекрасны...",
+        17: "Сегодняшний день посвящен доброте и щедрости...",
+        18: "Рождественские истории напоминают нам о важности веры и надежды...",
+        19: "Сегодняшний день посвящен теплу домашнего очага...",
+        20: "Рождество — это время чудес и радости...",
+        21: "Сегодня мы ценим моменты, проведенные с семьей и друзьями...",
+        22: "Сегодняшний день напоминает нам о важности улыбок и смеха...",
+        23: "Рождественские вечеринки и встречи с друзьями делают этот сезон особенным...",
+        24: "Сегодня — канун Рождества! Пусть этот день принесет вам радость и ожидание...",
+        25: "С Рождеством! Сегодня день волшебства, когда сбываются мечты..."
+    };
 </script>
 
 </body>
