@@ -8,78 +8,85 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-color: #f2f2f2;
-        }
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: #f2f2f2;
+}
 
-        .calendar {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-            max-width: 90vw;
-            width: 90vw;
-            padding: 10px;
-            margin-top: -40px;
-        }
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Сетка 5x5 */
+    gap: 8px;
+    width: 90vw;
+    max-width: 500px;
+    padding: 10px;
+    margin-top: -40px;
+}
 
-        .day {
-            background-size: cover;
-            background-position: center;
-            cursor: pointer;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            position: relative;
-            padding-top: 100%;
-        }
+.day {
+    width: 100%;
+    padding-top: 100%; /* Квадратные ячейки */
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    position: relative;
+}
 
-        .day:hover {
-            transform: scale(1.05);
-        }
+.day:hover {
+    transform: scale(1.05);
+}
 
-        /* Центрируем карточку по экрану */
-        .card {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 400px;
-            background-color: white;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            z-index: -1;
-            padding: 20px;
-            text-align: center;
-            transition: opacity 0.3s ease;
-        }
+/* Карточка */
+.card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 400px;
+    background-color: white;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: -1;
+    padding: 20px;
+    text-align: center;
+}
 
-        .card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
+.show-card .card {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 100;
+}
 
-        .card p {
-            font-size: 14px;
-            text-align: justify;
-        }
+.card img {
+    width: 100%; /* Изображение подстраивается под ширину карточки */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    text-align: justify;
+}
+
 
         .close-btn {
             position: absolute;
