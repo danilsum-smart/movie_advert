@@ -68,7 +68,6 @@
             z-index: -1;
             padding: 20px;
             text-align: center;
-            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .card img {
@@ -213,27 +212,24 @@
 
 <script>
     function openCard(dayNumber) {
-        const card = document.getElementByconst card = document.getElementById('card');
+        const card = document.getElementById('card');
         const overlay = document.querySelector('.overlay');
 
         // Устанавливаем содержимое карточки
-        document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
+        document.getElementById('document.getElementById('cardImage').src = `movies/poster${dayNumber}.jpg`;
         document.getElementById('cardText').innerText = descriptions[dayNumber] || `Description for day ${dayNumber}`;
 
-        // Удаляем класс анимации, чтобы сбросить его и обеспечить повторное воспроизведение
+        // Сбрасываем анимацию, если она уже применялась
         card.classList.remove('animate__flipInX');
+        
+        // Перезапуск анимации: добавляем анимацию с небольшой задержкой
+        setTimeout(() => {
+            card.classList.add('animate__flipInX');
+        }, 10);
 
-        // Принудительно запускаем перерасчет стилей (reflow), чтобы сбросить анимацию
-        void card.offsetWidth;
-
-        // Добавляем класс анимации снова, чтобы анимация воспроизвелась
-        card.classList.add('animate__flipInX');
-
-        // Показываем карточку
+        // Показываем карточку и фон
         card.style.opacity = '1';
         card.style.zIndex = '100';
-
-        // Добавляем затемнение фона
         overlay.style.opacity = '1';
         overlay.style.zIndex = '99';
     }
@@ -242,7 +238,7 @@
         const card = document.getElementById('card');
         const overlay = document.querySelector('.overlay');
 
-        // Убираем видимость карточки
+        // Удаляем анимацию и скрываем карточку
         card.classList.remove('animate__flipInX');
         card.style.opacity = '0';
         card.style.zIndex = '-1';
@@ -278,7 +274,7 @@
         22: "Сегодняшний день напоминает о важности улыбок и смеха. Пусть он будет радостным и светлым.",
         23: "Рождественские вечеринки делают сезон особенным. Пусть ваш день будет наполнен весельем и друзьями.",
         24: "Сегодня — канун Рождества! Пусть этот день принесет радость и ожидание завтрашнего праздника.",
-        25: "2 Рождеством! Пусть сегодняшний день будет наполнен любовью, счастьем и чудесами. Поздравляем!"
+        25: "3 Рождеством! Пусть сегодняшний день будет наполнен любовью, счастьем и чудесами. Поздравляем!"
     };
 </script>
 
