@@ -21,6 +21,21 @@
     background-color: #f2f2f2;
 }
 
+.header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            background-color: #eaeaea; /* Опционально, можно добавить цвет фона для области заголовка */
+        }
+
+        /* Стили для изображения заголовка */
+        .header img {
+            width: 80%; /* Настроить ширину по необходимости */
+            max-width: 500px;
+            height: auto;
+        }
+
 .calendar {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Сетка 5x5 */
@@ -158,6 +173,11 @@
     </style>
 </head>
 <body>
+
+<!-- Заголовок с картинкой -->
+    <header class="header">
+        <img src="top1.png" alt="CHRISTMAS MOVIE ADVENT CALENDAR">
+    </header>
 
 <div class="calendar">
     <!-- Добавляем все 25 ячеек календаря с уникальными изображениями -->
